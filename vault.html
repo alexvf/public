@@ -19,14 +19,14 @@
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .screen{display:none;flex-direction:column;min-height:100vh}
 .screen.active{display:flex}
-.centered{align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 30%,rgba(124,106,255,0.08) 0%,transparent 60%)}
+.centered{align-items:center;justify-content:center;padding:2rem;background:radial-gradient(ellipse at 50% 30%,rgba(124,106,255,0.08) 0%,transparent 60%)}
 .vault-logo{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,#7c6aff,#a78bfa);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;box-shadow:0 0 40px rgba(124,106,255,0.3);flex-shrink:0}
 .vault-logo svg{width:32px;height:32px}
 .logo-sm{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#7c6aff,#a78bfa);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-sm svg{width:15px;height:15px}
 .auth-card{width:100%;max-width:400px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:1.75rem}
 .card-title{font-size:22px;font-weight:600;text-align:center;margin-bottom:.25rem;letter-spacing:-.5px}
-.card-sub{color:var(--text2);font-size:13px;text-align:center;margin-bottom:2rem}
+.card-sub{color:var(--text2);font-size:13px;text-align:center;margin-bottom:1.5rem;line-height:1.6}
 .fg{margin-bottom:.9rem}
 .fl{font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem;display:flex;justify-content:space-between;align-items:center}
 .fi{width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:var(--font);font-size:14px;padding:.65rem .9rem;outline:none;transition:border-color .2s}
@@ -62,7 +62,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .str-bar{height:3px;border-radius:99px;background:var(--surface3);margin-top:.4rem;overflow:hidden}
 .str-fill{height:100%;border-radius:99px;transition:width .3s,background .3s}
 .str-lbl{font-size:10px;color:var(--text3);margin-top:.2rem}
-.err{color:var(--danger);font-size:12px;text-align:center;margin-top:.65rem;min-height:18px}
+.err{color:var(--danger);font-size:12px;margin-top:.65rem;min-height:18px}
+.err.center{text-align:center}
 .note{background:rgba(124,106,255,.07);border:1px solid rgba(124,106,255,.2);border-radius:var(--radius-sm);padding:.85rem 1rem;margin-top:1rem;font-size:12px;color:var(--text2);line-height:1.7}
 .note strong{color:var(--accent2)}
 .divider{display:flex;align-items:center;gap:.75rem;color:var(--text3);font-size:11px;margin:.9rem 0 0}
@@ -113,7 +114,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--text3)}
 .empty-icon{font-size:36px;margin-bottom:1rem;opacity:.35}
 .fab{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7c6aff,#a78bfa);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(124,106,255,.45);transition:transform .15s,box-shadow .15s;z-index:200}
-.fab:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(124,106,255,.55)}
+.fab:hover{transform:scale(1.08)}
 .fab:active{transform:scale(.96)}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:300;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
@@ -123,7 +124,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 @media(min-width:600px){.modal-handle{display:none}}
 .modal-title{font-size:17px;font-weight:600;margin-bottom:1.25rem}
 .pw-gen-row{display:flex;gap:.5rem}
-.pw-gen-row .fi{flex:1;font-family:var(--mono)}
 .toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface2);border:1px solid var(--border2);border-radius:99px;color:var(--text);font-size:13px;padding:.5rem 1.1rem;z-index:999;opacity:0;transition:opacity .2s,transform .2s;white-space:nowrap;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .confirm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:400;align-items:center;justify-content:center;padding:1rem}
@@ -142,7 +142,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .btn-conflict{width:100%;padding:.65rem;border-radius:var(--radius-sm);cursor:pointer;font-family:var(--font);font-size:13px;font-weight:500;border:1px solid var(--border2);background:var(--surface2);color:var(--text);text-align:left;transition:all .15s}
 .btn-conflict:hover{background:var(--surface3);border-color:var(--accent)}
 .btn-conflict .cf-sub{font-size:11px;color:var(--text3);margin-top:2px;font-weight:400}
-.settings-panel{position:fixed;top:0;right:-380px;width:380px;max-width:100vw;height:100vh;background:var(--surface);border-left:1px solid var(--border2);z-index:250;transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:1.5rem}
+.settings-panel{position:fixed;top:0;right:-400px;width:400px;max-width:100vw;height:100vh;background:var(--surface);border-left:1px solid var(--border2);z-index:250;transition:right .3s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:1.5rem}
 .settings-panel.open{right:0}
 .settings-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:240}
 .settings-overlay.open{display:block}
@@ -162,28 +162,45 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <body>
 
 <!-- SETUP -->
-<div id="screen-setup" class="screen centered" style="padding:2rem">
+<div id="screen-setup" class="screen centered">
   <div class="vault-logo"><svg viewBox="0 0 34 34" fill="none"><rect x="8" y="14" width="18" height="14" rx="3" fill="white" opacity=".9"/><path d="M12 14v-4a5 5 0 0 1 10 0v4" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="17" cy="21" r="2.2" fill="#7c6aff"/></svg></div>
-  <div class="auth-card">
-    <div class="card-title">Create your vault</div>
-    <div class="card-sub">One strong master password. Everything else is handled.</div>
+  <div class="auth-card" id="setup-step1">
+    <div class="card-title">Welcome to Vault</div>
+    <div class="card-sub">Connect your GitHub repo first — this is what syncs your vault across all devices.</div>
+    <div class="fg"><div class="fl">Personal Access Token</div>
+      <div class="fi-wrap"><input type="password" id="su-token" class="fi mono" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="font-size:12px">
+      <button class="fi-eye" onclick="toggleVis('su-token',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+    </div>
+    <div class="fg"><div class="fl">GitHub Username</div><input type="text" id="su-user" class="fi" placeholder="your-github-username" autocomplete="off"></div>
+    <div class="fg"><div class="fl">Repository Name</div><input type="text" id="su-repo" class="fi" placeholder="my-vault" autocomplete="off"></div>
+    <div class="fg"><div class="fl">Vault file path</div><input type="text" id="su-path" class="fi" placeholder="vault.enc" value="vault.enc" autocomplete="off"></div>
+    <button class="btn btn-primary" onclick="setupStep1()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Continue</button>
+    <div class="err center" id="su1-err"></div>
+    <div class="note"><strong>Single file design:</strong> The salt is embedded inside <code>vault.enc</code> — no separate files, nothing to get out of sync.</div>
+  </div>
+  <div class="auth-card" id="setup-step2" style="display:none">
+    <div class="card-title" id="su2-title">Create master password</div>
+    <div class="card-sub" id="su2-sub">Choose a strong password. This is the only key to your vault.</div>
     <div class="fg"><div class="fl">Master password <span style="color:var(--danger)">*</span></div>
-      <div class="fi-wrap"><input type="password" id="s-pw1" class="fi mono" placeholder="Choose a strong password" autocomplete="new-password" oninput="updateStr(this.value,'s-sf','s-sl')">
+      <div class="fi-wrap"><input type="password" id="s-pw1" class="fi mono" placeholder="Enter master password" autocomplete="new-password" oninput="updateStr(this.value,'s-sf','s-sl')">
       <button class="fi-eye" onclick="toggleVis('s-pw1',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
       <div class="str-bar"><div class="str-fill" id="s-sf" style="width:0%"></div></div><div class="str-lbl" id="s-sl"></div>
     </div>
-    <div class="fg"><div class="fl">Confirm password <span style="color:var(--danger)">*</span></div>
+    <div class="fg" id="su2-confirm-wrap"><div class="fl">Confirm password <span style="color:var(--danger)">*</span></div>
       <div class="fi-wrap"><input type="password" id="s-pw2" class="fi mono" placeholder="Repeat password" autocomplete="new-password">
       <button class="fi-eye" onclick="toggleVis('s-pw2',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
     </div>
-    <button class="btn btn-primary" onclick="setupVault()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Create vault</button>
-    <div class="err" id="s-err"></div>
+    <button class="btn btn-primary" id="su2-btn" onclick="setupStep2()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="su2-btn-label">Create vault</span>
+    </button>
+    <div class="err center" id="su2-err"></div>
     <div class="note"><strong>Zero-knowledge:</strong> AES-256-GCM via PBKDF2 (210k iterations). Your master password is never stored.</div>
   </div>
 </div>
 
 <!-- LOCK -->
-<div id="screen-lock" class="screen centered" style="padding:2rem">
+<div id="screen-lock" class="screen centered">
   <div class="vault-logo"><svg viewBox="0 0 34 34" fill="none"><rect x="8" y="14" width="18" height="14" rx="3" fill="white" opacity=".9"/><path d="M12 14v-4a5 5 0 0 1 10 0v4" stroke="white" stroke-width="2.2" stroke-linecap="round" fill="none"/><circle cx="17" cy="21" r="2.2" fill="#7c6aff"/></svg></div>
   <div style="text-align:center;margin-bottom:1.75rem">
     <div style="font-size:24px;font-weight:600;letter-spacing:-.5px">Vault</div>
@@ -199,7 +216,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="divider">or</div>
       <button class="btn btn-bio" onclick="biometricAuth()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Use biometrics</button>
     </div>
-    <div class="err" id="l-err"></div>
+    <div class="err center" id="l-err"></div>
   </div>
 </div>
 
@@ -239,15 +256,14 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="fg"><div class="fl">Repository Name</div><input type="text" id="cfg-repo" class="fi" placeholder="my-vault" autocomplete="off"></div>
     <div class="fg"><div class="fl">File Path</div><input type="text" id="cfg-path" class="fi" placeholder="vault.enc" value="vault.enc" autocomplete="off"></div>
     <button class="btn btn-primary" style="margin-top:.5rem" onclick="saveGithubConfig()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Save &amp; test connection</button>
-    <div class="err" id="cfg-err" style="text-align:left"></div>
-    <div class="status-row" id="sync-status-row"><div class="sync-dot" id="cfg-sync-dot"></div><span id="cfg-sync-label">Not configured</span></div>
+    <div class="err" id="cfg-err"></div>
+    <div class="status-row"><div class="sync-dot" id="cfg-sync-dot"></div><span id="cfg-sync-label">Not configured</span></div>
     <div class="note" style="margin-top:.75rem"><strong>Token scope needed:</strong> repo only. Make your vault repo private for best practice.</div>
   </div>
   <div class="settings-section">
     <div class="settings-section-title">Sync behaviour</div>
-    <div class="fg"><div class="fl">Auto-sync on open <span id="autosync-badge" class="badge badge-ok" style="display:none">On</span></div>
-      <button class="btn btn-ghost" style="margin:0" onclick="toggleAutoSync()" id="autosync-btn">Enable auto-sync</button>
-    </div>
+    <button class="btn btn-ghost" style="margin:0" onclick="toggleAutoSync()" id="autosync-btn">Enable auto-sync</button>
+    <span id="autosync-badge" class="badge badge-ok" style="display:none;margin-top:.5rem">Auto-sync on</span>
   </div>
   <div class="settings-section">
     <div class="settings-section-title">Biometrics</div>
@@ -266,12 +282,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="modal-handle"></div>
     <div class="modal-title" id="modal-title">New entry</div>
     <div class="fg"><div class="fl">Title <span style="color:var(--danger)">*</span></div><input type="text" id="f-title" class="fi" placeholder="e.g. Gmail, Netflix, Bank…" autocomplete="off"></div>
-    <!-- LOGIN FIELD -->
-    <div class="fg"><div class="fl">Login / Username / Email</div>
-      <div class="fi-wrap" style="display:flex;gap:.5rem;align-items:center">
-        <input type="text" id="f-login" class="fi" placeholder="username or email" autocomplete="off" style="flex:1;padding-right:.9rem">
-      </div>
-    </div>
+    <div class="fg"><div class="fl">Login / Username / Email</div><input type="text" id="f-login" class="fi" placeholder="username or email" autocomplete="off"></div>
     <div class="fg">
       <div class="fl">Password <span style="color:var(--danger)">*</span></div>
       <div class="pw-gen-row">
@@ -289,7 +300,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="fg" style="margin-top:.9rem"><div class="fl">Tags <span style="color:var(--text3);font-size:10px;text-transform:none;letter-spacing:0">(comma-separated)</span></div><input type="text" id="f-tags" class="fi" placeholder="social, 2fa, important" autocomplete="off"></div>
     <div class="fg"><div class="fl">Notes</div><textarea id="f-notes" class="fta" placeholder="Any notes…"></textarea></div>
     <div class="form-actions"><button class="btn btn-cancel" onclick="closeModal()">Cancel</button><button class="btn btn-save" onclick="saveEntry()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Save</button></div>
-    <div class="err" id="modal-err" style="text-align:left;margin-top:.5rem"></div>
+    <div class="err" id="modal-err" style="margin-top:.5rem"></div>
   </div>
 </div>
 
@@ -301,8 +312,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <div class="confirm-btns"><button class="btn-cd btn-cd-cancel" onclick="closeConfirm()">Cancel</button><button class="btn-cd btn-cd-ok" id="confirm-ok">Delete</button></div>
   </div>
   <div class="conflict-box" id="conflict-box" style="display:none">
-    <div class="conflict-title">Sync conflict detected</div>
-    <div class="conflict-body">Both local and remote vaults were modified since last sync. Which version do you want to keep?</div>
+    <div class="conflict-title">Sync conflict</div>
+    <div class="conflict-body">Both local and remote were modified since last sync. Which do you want to keep?</div>
     <div class="conflict-btns">
       <button class="btn-conflict" onclick="resolveConflict('local')">Use local version<div class="cf-sub" id="cf-local-time"></div></button>
       <button class="btn-conflict" onclick="resolveConflict('remote')">Use remote version<div class="cf-sub" id="cf-remote-time"></div></button>
@@ -314,88 +325,363 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
 <script>
 'use strict';
-const SK='vault_v2',SALT_K='vault_salt_v2',CFG_K='vault_cfg_v2',SYNC_TS_K='vault_sync_ts',BIO_K='vault_bio_v2',AUTO_SYNC_K='vault_autosync';
-let cryptoKey=null,entries=[],editingId=null,expandedId=null,activeFilter='all',ghConfig=null,isSyncing=false,pendingConfirmCb=null,conflictData=null;
+// Storage keys
+const SK='vault_v3', CFG_K='vault_cfg_v3', SYNC_TS_K='vault_sync_ts_v3', BIO_K='vault_bio_v3', AUTO_SYNC_K='vault_autosync_v3';
 
-async function deriveKey(pw,salt){const enc=new TextEncoder();const raw=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:210000,hash:'SHA-256'},raw,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
-async function encrypt(key,obj){const iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(obj)));const buf=new Uint8Array(12+ct.byteLength);buf.set(iv);buf.set(new Uint8Array(ct),12);return btoa(String.fromCharCode(...buf));}
-async function decrypt(key,b64){const buf=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:buf.slice(0,12)},key,buf.slice(12));return JSON.parse(new TextDecoder().decode(pt));}
-function getSalt(){const s=localStorage.getItem(SALT_K);return s?Uint8Array.from(atob(s),c=>c.charCodeAt(0)):null;}
-function createSalt(){const s=crypto.getRandomValues(new Uint8Array(32));localStorage.setItem(SALT_K,btoa(String.fromCharCode(...s)));return s;}
+// ---- VAULT BLOB FORMAT ----
+// The vault blob is a base64 string encoding:
+//   [32 bytes salt][12 bytes IV][N bytes AES-256-GCM ciphertext]
+// Salt and IV are both prepended in plaintext — this is standard and safe.
+// Any device that has the blob + master password can derive the key and decrypt.
 
-async function saveVault(skipRemote){const blob={entries,savedAt:Date.now()};const enc=await encrypt(cryptoKey,blob);localStorage.setItem(SK,enc);if(!skipRemote&&ghConfig)await pushToGithub(enc);}
+let cryptoKey=null, vaultSalt=null;
+let entries=[], editingId=null, expandedId=null, activeFilter='all';
+let ghConfig=null, isSyncing=false, pendingConfirmCb=null, conflictData=null;
 
-function loadGhConfig(){try{return JSON.parse(localStorage.getItem(CFG_K)||'null');}catch{return null;}}
-function ghApiUrl(cfg){return`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/${cfg.path}`;}
-function ghHeaders(cfg){return{'Authorization':`Bearer ${cfg.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};}
-async function ghFetchRemote(cfg){const r=await fetch(ghApiUrl(cfg),{headers:ghHeaders(cfg)});if(r.status===404)return null;if(!r.ok)throw new Error(`GitHub ${r.status}`);const j=await r.json();return{content:atob(j.content.replace(/\n/g,'')),sha:j.sha};}
-async function ghPush(cfg,content,sha){const body={message:`vault sync ${new Date().toISOString()}`,content:btoa(unescape(encodeURIComponent(content)))};if(sha)body.sha=sha;const r=await fetch(ghApiUrl(cfg),{method:'PUT',headers:ghHeaders(cfg),body:JSON.stringify(body)});if(!r.ok){const e=await r.json();throw new Error(e.message||`GitHub ${r.status}`);}return r.json();}
+// ---- CRYPTO ----
+async function deriveKey(pw, salt){
+  const raw=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:210000,hash:'SHA-256'},raw,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
 
-async function pushToGithub(enc){if(!ghConfig)return;setSyncState('syncing');try{const remote=await ghFetchRemote(ghConfig);await ghPush(ghConfig,enc,remote?.sha);localStorage.setItem(SYNC_TS_K,Date.now().toString());setSyncState('synced');updateSettingsSyncStatus('synced','Last sync: just now');}catch(e){setSyncState('error');updateSettingsSyncStatus('error',e.message);showToast('Sync failed: '+e.message);}}
+// Encrypt entries into a self-contained blob that includes the salt
+async function encryptVault(key, salt, data){
+  const iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(data)));
+  // Layout: [32 salt][12 iv][ciphertext]
+  const buf=new Uint8Array(32+12+ct.byteLength);
+  buf.set(salt,0); buf.set(iv,32); buf.set(new Uint8Array(ct),44);
+  return btoa(String.fromCharCode(...buf));
+}
 
-async function syncNow(){if(!ghConfig){openSettings();showToast('Configure GitHub sync first');return;}if(isSyncing)return;isSyncing=true;setSyncState('syncing');try{const remote=await ghFetchRemote(ghConfig);const localBlob=localStorage.getItem(SK);const lastSyncTs=parseInt(localStorage.getItem(SYNC_TS_K)||'0');if(!remote){await pushToGithub(localBlob);showToast('Vault pushed to GitHub');}else{let rd;try{rd=await decrypt(cryptoKey,remote.content);}catch{showToast('Remote vault uses a different password');isSyncing=false;setSyncState('error');return;}const rts=rd.savedAt||0;let lts=0;try{const ld=await decrypt(cryptoKey,localBlob);lts=ld.savedAt||0;}catch{}const lc=lts>lastSyncTs,rc=rts>lastSyncTs;if(lc&&rc&&lts!==rts){conflictData={remote:rd,remoteSha:remote.sha,remoteTs:rts,localTs:lts};showConflict(lts,rts);}else if(rts>lts){entries=rd.entries||[];await saveVault(true);localStorage.setItem(SYNC_TS_K,Date.now().toString());renderAll();showToast('Vault updated from GitHub');setSyncState('synced');}else{await pushToGithub(localBlob);showToast('Vault synced to GitHub');}}}catch(e){setSyncState('error');showToast('Sync error: '+e.message);}isSyncing=false;}
+// Decrypt — extracts salt from blob, derives key, decrypts
+async function decryptVault(pw, b64){
+  const buf=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+  const salt=buf.slice(0,32);
+  const iv=buf.slice(32,44);
+  const ct=buf.slice(44);
+  const key=await deriveKey(pw,salt);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);
+  const data=JSON.parse(new TextDecoder().decode(pt));
+  return {key, salt, data};
+}
 
-function showConflict(lt,rt){document.getElementById('confirm-box').style.display='none';document.getElementById('conflict-box').style.display='block';document.getElementById('cf-local-time').textContent='Modified: '+new Date(lt).toLocaleString();document.getElementById('cf-remote-time').textContent='Modified: '+new Date(rt).toLocaleString();document.getElementById('confirm-overlay').classList.add('open');}
-async function resolveConflict(choice){closeConfirm();if(!conflictData)return;if(choice==='remote'){entries=conflictData.remote.entries||[];await saveVault(true);await pushToGithub(localStorage.getItem(SK));renderAll();showToast('Using remote version');}else{await pushToGithub(localStorage.getItem(SK));showToast('Using local version — pushed to GitHub');}conflictData=null;setSyncState('synced');}
+// ---- VAULT SAVE / LOAD ----
+async function saveVault(skipRemote){
+  const blob=await encryptVault(cryptoKey, vaultSalt, {entries, savedAt:Date.now()});
+  localStorage.setItem(SK, blob);
+  if(!skipRemote && ghConfig) await pushToGithub(blob);
+}
 
-async function saveGithubConfig(){const token=document.getElementById('cfg-token').value.trim(),user=document.getElementById('cfg-user').value.trim(),repo=document.getElementById('cfg-repo').value.trim(),path=document.getElementById('cfg-path').value.trim()||'vault.enc';const errEl=document.getElementById('cfg-err');errEl.textContent='';if(!token||!user||!repo){errEl.textContent='All fields required.';return;}const cfg={token,user,repo,path};errEl.textContent='Testing connection…';try{const r=await fetch(`https://api.github.com/repos/${user}/${repo}`,{headers:ghHeaders(cfg)});if(!r.ok)throw new Error(`Repo not accessible (${r.status})`);ghConfig=cfg;localStorage.setItem(CFG_K,JSON.stringify(cfg));errEl.style.color='var(--success)';errEl.textContent='✓ Connected';updateSettingsSyncStatus('synced','Connected');setTimeout(()=>{errEl.textContent='';errEl.style.color='';},3000);updateAutoSyncUI();}catch(e){errEl.style.color='';errEl.textContent='Error: '+e.message;updateSettingsSyncStatus('error',e.message);}}
+// ---- GITHUB ----
+function loadGhConfig(){ try{ return JSON.parse(localStorage.getItem(CFG_K)||'null'); }catch{return null;} }
+function ghApiUrl(cfg){ return `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/${cfg.path}`; }
+function ghHeaders(cfg){ return {'Authorization':`Bearer ${cfg.token}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'}; }
 
-function openSettings(){if(ghConfig){document.getElementById('cfg-token').value=ghConfig.token;document.getElementById('cfg-user').value=ghConfig.user;document.getElementById('cfg-repo').value=ghConfig.repo;document.getElementById('cfg-path').value=ghConfig.path;updateSettingsSyncStatus('synced',`${ghConfig.user}/${ghConfig.repo}/${ghConfig.path}`);}else updateSettingsSyncStatus('none','Not configured');updateAutoSyncUI();updateBioSettingsUI();document.getElementById('settings-panel').classList.add('open');document.getElementById('settings-overlay').classList.add('open');}
-function closeSettings(){document.getElementById('settings-panel').classList.remove('open');document.getElementById('settings-overlay').classList.remove('open');}
-function updateSettingsSyncStatus(state,msg){document.getElementById('cfg-sync-dot').className='sync-dot '+(state==='synced'?'synced':state==='error'?'error':'');document.getElementById('cfg-sync-label').textContent=msg;}
-function toggleAutoSync(){localStorage.setItem(AUTO_SYNC_K,localStorage.getItem(AUTO_SYNC_K)==='1'?'0':'1');updateAutoSyncUI();}
-function updateAutoSyncUI(){const on=localStorage.getItem(AUTO_SYNC_K)==='1';document.getElementById('autosync-btn').textContent=on?'Disable auto-sync':'Enable auto-sync';document.getElementById('autosync-badge').style.display=on?'inline-flex':'none';}
-async function updateBioSettingsUI(){const avail=await checkBioSupport();const reg=localStorage.getItem(BIO_K)==='1';const info=document.getElementById('bio-settings-info'),btn=document.getElementById('bio-settings-btn');if(!avail){info.textContent='Biometrics not supported on this device/browser.';btn.style.display='none';return;}info.textContent=reg?'Biometrics registered.':'No biometrics registered.';btn.textContent=reg?'Re-register biometrics':'Register biometrics';}
-function confirmWipe(){closeSettings();showConfirm('Wipe local vault?','This removes all local data. Remote vault on GitHub remains intact.','Wipe',()=>{[SK,SALT_K,CFG_K,SYNC_TS_K,BIO_K,AUTO_SYNC_K,'vault_bio_cred','vault_session_pw'].forEach(k=>localStorage.removeItem(k));sessionStorage.clear();location.reload();},'var(--danger)');}
-function setSyncState(s){document.getElementById('sync-dot').className='sync-dot'+(s==='synced'?' synced':s==='syncing'?' syncing':s==='error'?' error':'');}
+async function ghGet(cfg){
+  const r=await fetch(ghApiUrl(cfg),{headers:ghHeaders(cfg)});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error(`GitHub ${r.status}: ${r.statusText}`);
+  const j=await r.json();
+  return {content:atob(j.content.replace(/\n/g,'')), sha:j.sha};
+}
 
-async function checkBioSupport(){try{return!!window.PublicKeyCredential&&await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();}catch{return false;}}
-async function setupBiometric(){try{const cred=await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),rp:{name:'Vault',id:location.hostname||'localhost'},user:{id:new Uint8Array(16),name:'vault_user',displayName:'Vault'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}});if(cred){localStorage.setItem('vault_bio_cred',btoa(String.fromCharCode(...new Uint8Array(cred.rawId))));localStorage.setItem(BIO_K,'1');showToast('Biometrics registered');updateBioSettingsUI();}}catch(e){showToast('Biometric setup: '+e.message);}}
-async function biometricAuth(){try{const credId=Uint8Array.from(atob(localStorage.getItem('vault_bio_cred')||''),c=>c.charCodeAt(0));const a=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),allowCredentials:[{type:'public-key',id:credId}],userVerification:'required',timeout:60000}});if(a){const pw=sessionStorage.getItem('vault_session_pw');if(pw)await attemptUnlock(pw);else{showToast('Session expired — enter master password');document.getElementById('l-bio-wrap').style.display='none';}}}catch(e){showToast('Biometric failed');}}
+async function ghPut(cfg, content, sha){
+  const body={message:`vault sync ${new Date().toISOString()}`,content:btoa(unescape(encodeURIComponent(content)))};
+  if(sha) body.sha=sha;
+  const r=await fetch(ghApiUrl(cfg),{method:'PUT',headers:ghHeaders(cfg),body:JSON.stringify(body)});
+  if(!r.ok){const e=await r.json(); throw new Error(e.message||`GitHub ${r.status}`);}
+  return r.json();
+}
 
-async function init(){const hasSalt=!!getSalt(),hasVault=!!localStorage.getItem(SK);if(!hasSalt||!hasVault){showScreen('setup');return;}showScreen('lock');document.getElementById('l-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});ghConfig=loadGhConfig();const bioAvail=await checkBioSupport(),bioReg=localStorage.getItem(BIO_K)==='1';if(bioAvail&&bioReg&&localStorage.getItem('vault_bio_cred')){document.getElementById('l-bio-wrap').style.display='block';if(sessionStorage.getItem('vault_session_pw'))setTimeout(biometricAuth,400);}}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('screen-'+id).classList.add('active');}
-async function setupVault(){const pw1=document.getElementById('s-pw1').value,pw2=document.getElementById('s-pw2').value,err=document.getElementById('s-err');if(!pw1){err.textContent='Enter a master password.';return;}if(pw1.length<8){err.textContent='Minimum 8 characters.';return;}if(pw1!==pw2){err.textContent='Passwords do not match.';return;}err.textContent='';const salt=createSalt();cryptoKey=await deriveKey(pw1,salt);entries=[];await saveVault(true);sessionStorage.setItem('vault_session_pw',pw1);showScreen('main');renderAll();setSyncState('');const bioAvail=await checkBioSupport();if(bioAvail)await setupBiometric();}
-async function unlock(){const pw=document.getElementById('l-pw').value;document.getElementById('l-err').textContent='';if(!pw){document.getElementById('l-err').textContent='Enter your master password.';return;}await attemptUnlock(pw);}
-async function attemptUnlock(pw){try{const salt=getSalt();const key=await deriveKey(pw,salt);const data=await decrypt(key,localStorage.getItem(SK));cryptoKey=key;entries=data.entries||[];sessionStorage.setItem('vault_session_pw',pw);document.getElementById('l-err').textContent='';showScreen('main');ghConfig=loadGhConfig();renderAll();if(ghConfig&&localStorage.getItem(AUTO_SYNC_K)==='1')setTimeout(syncNow,600);setSyncState(ghConfig?'':'');const bioAvail=await checkBioSupport(),bioReg=localStorage.getItem(BIO_K)==='1';if(bioAvail&&!bioReg)await setupBiometric();}catch{document.getElementById('l-err').textContent='Wrong password or corrupted vault.';}}
-function lockVault(){cryptoKey=null;entries=[];expandedId=null;sessionStorage.removeItem('vault_session_pw');showScreen('lock');document.getElementById('l-pw').value='';document.getElementById('l-err').textContent='';}
+async function pushToGithub(blob){
+  if(!ghConfig) return;
+  setSyncState('syncing');
+  try{
+    const remote=await ghGet(ghConfig);
+    await ghPut(ghConfig, blob, remote?.sha);
+    localStorage.setItem(SYNC_TS_K, Date.now().toString());
+    setSyncState('synced');
+    updateSettingsSyncStatus('synced','Last sync: just now');
+  }catch(e){
+    setSyncState('error');
+    updateSettingsSyncStatus('error',e.message);
+    showToast('Sync failed: '+e.message);
+  }
+}
 
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+async function syncNow(){
+  if(!ghConfig){openSettings();showToast('Configure GitHub sync first');return;}
+  if(isSyncing) return;
+  isSyncing=true; setSyncState('syncing');
+  try{
+    const remote=await ghGet(ghConfig);
+    const localBlob=localStorage.getItem(SK);
+    const lastSyncTs=parseInt(localStorage.getItem(SYNC_TS_K)||'0');
+
+    if(!remote){
+      // No remote yet — push
+      await pushToGithub(localBlob);
+      showToast('Vault pushed to GitHub');
+    } else {
+      // Try to decrypt remote with current master password
+      // Since salt is embedded in blob, this will always work if password is correct
+      let rd;
+      try{
+        const result=await decryptVault(sessionStorage.getItem('vault_session_pw'), remote.content);
+        rd=result.data;
+      }catch{
+        showToast('Wrong password for remote vault');
+        isSyncing=false; setSyncState('error'); return;
+      }
+
+      const rts=rd.savedAt||0;
+      let lts=0;
+      try{ const ld=(await decryptVault(sessionStorage.getItem('vault_session_pw'),localBlob)).data; lts=ld.savedAt||0; }catch{}
+
+      const lc=lts>lastSyncTs, rc=rts>lastSyncTs;
+      if(lc&&rc&&lts!==rts){
+        conflictData={remote:rd,remoteSha:remote.sha,remoteTs:rts,localTs:lts};
+        showConflict(lts,rts);
+      } else if(rts>lts){
+        entries=rd.entries||[];
+        // Re-encrypt with local key+salt so local and remote stay consistent
+        await saveVault(true);
+        localStorage.setItem(SYNC_TS_K,Date.now().toString());
+        renderAll(); showToast('Vault updated from GitHub'); setSyncState('synced');
+      } else {
+        await pushToGithub(localBlob);
+        showToast('Vault synced to GitHub');
+      }
+    }
+  }catch(e){ setSyncState('error'); showToast('Sync error: '+e.message); }
+  isSyncing=false;
+}
+
+function showConflict(lt,rt){
+  document.getElementById('confirm-box').style.display='none';
+  document.getElementById('conflict-box').style.display='block';
+  document.getElementById('cf-local-time').textContent='Modified: '+new Date(lt).toLocaleString();
+  document.getElementById('cf-remote-time').textContent='Modified: '+new Date(rt).toLocaleString();
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+async function resolveConflict(choice){
+  closeConfirm();
+  if(!conflictData) return;
+  if(choice==='remote'){
+    entries=conflictData.remote.entries||[];
+    await saveVault(true);
+    renderAll(); showToast('Using remote version');
+  } else {
+    await pushToGithub(localStorage.getItem(SK));
+    showToast('Using local version — pushed to GitHub');
+  }
+  conflictData=null; setSyncState('synced');
+}
+
+// ---- SETUP ----
+async function setupStep1(){
+  const token=document.getElementById('su-token').value.trim();
+  const user=document.getElementById('su-user').value.trim();
+  const repo=document.getElementById('su-repo').value.trim();
+  const path=document.getElementById('su-path').value.trim()||'vault.enc';
+  const errEl=document.getElementById('su1-err');
+  errEl.textContent=''; errEl.style.color='';
+  if(!token||!user||!repo){errEl.textContent='All fields are required.';return;}
+  const cfg={token,user,repo,path};
+  errEl.textContent='Connecting…'; errEl.style.color='var(--text2)';
+  try{
+    const r=await fetch(`https://api.github.com/repos/${user}/${repo}`,{headers:ghHeaders(cfg)});
+    if(!r.ok) throw new Error(`Cannot access repo (${r.status}). Check username, repo name and token.`);
+    ghConfig=cfg; localStorage.setItem(CFG_K,JSON.stringify(cfg));
+    // Check if a vault already exists on GitHub
+    const existing=await ghGet(cfg);
+    errEl.textContent=''; errEl.style.color='';
+    document.getElementById('setup-step1').style.display='none';
+    document.getElementById('setup-step2').style.display='block';
+    if(existing){
+      // Joining device — vault exists on GitHub, salt is embedded in it
+      document.getElementById('su2-title').textContent='Enter master password';
+      document.getElementById('su2-sub').textContent='Vault found on GitHub. Enter your master password to unlock it on this device.';
+      document.getElementById('su2-confirm-wrap').style.display='none';
+      document.getElementById('su2-btn-label').textContent='Unlock on this device';
+      document.getElementById('su2-btn').dataset.remoteBlob=existing.content;
+      document.getElementById('su2-btn').dataset.mode='join';
+    } else {
+      document.getElementById('su2-btn').dataset.mode='create';
+    }
+    setTimeout(()=>document.getElementById('s-pw1').focus(),120);
+  }catch(e){ errEl.style.color=''; errEl.textContent=e.message; }
+}
+
+async function setupStep2(){
+  const pw=document.getElementById('s-pw1').value;
+  const pw2=document.getElementById('s-pw2').value;
+  const errEl=document.getElementById('su2-err');
+  const mode=document.getElementById('su2-btn').dataset.mode||'create';
+  errEl.textContent='';
+  if(!pw){errEl.textContent='Enter your password.';return;}
+
+  if(mode==='create'){
+    if(pw.length<8){errEl.textContent='Minimum 8 characters.';return;}
+    if(pw!==pw2){errEl.textContent='Passwords do not match.';return;}
+    errEl.textContent='Creating vault…'; errEl.style.color='var(--text2)';
+    // Generate fresh salt
+    const salt=crypto.getRandomValues(new Uint8Array(32));
+    const key=await deriveKey(pw,salt);
+    cryptoKey=key; vaultSalt=salt; entries=[];
+    await saveVault(false); // pushes to GitHub immediately
+    sessionStorage.setItem('vault_session_pw',pw);
+    errEl.textContent=''; errEl.style.color='';
+    finishSetup(pw);
+  } else {
+    // Join mode — decrypt remote blob to verify password and extract entries
+    errEl.textContent='Verifying…'; errEl.style.color='var(--text2)';
+    const remoteBlob=document.getElementById('su2-btn').dataset.remoteBlob;
+    try{
+      const {key,salt,data}=await decryptVault(pw,remoteBlob);
+      cryptoKey=key; vaultSalt=salt; entries=data.entries||[];
+      // Save locally (don't push — remote is already correct)
+      const localBlob=await encryptVault(key,salt,{entries,savedAt:data.savedAt});
+      localStorage.setItem(SK,localBlob);
+      localStorage.setItem(SYNC_TS_K,Date.now().toString());
+      sessionStorage.setItem('vault_session_pw',pw);
+      errEl.textContent=''; errEl.style.color='';
+      finishSetup(pw);
+    }catch{
+      errEl.style.color=''; errEl.textContent='Wrong password — does not match the vault on GitHub.';
+    }
+  }
+}
+
+async function finishSetup(pw){
+  showScreen('main'); renderAll(); setSyncState(ghConfig?'synced':'');
+  const bioAvail=await checkBioSupport();
+  if(bioAvail) await setupBiometric();
+}
+
+// ---- INIT ----
+async function init(){
+  ghConfig=loadGhConfig();
+  const localBlob=localStorage.getItem(SK);
+
+  if(!localBlob){
+    // No local vault — go to setup
+    showScreen('setup');
+    if(ghConfig){
+      document.getElementById('su-token').value=ghConfig.token;
+      document.getElementById('su-user').value=ghConfig.user;
+      document.getElementById('su-repo').value=ghConfig.repo;
+      document.getElementById('su-path').value=ghConfig.path;
+    }
+    return;
+  }
+
+  showScreen('lock');
+  document.getElementById('l-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+  const bioAvail=await checkBioSupport(), bioReg=localStorage.getItem(BIO_K)==='1';
+  if(bioAvail&&bioReg&&localStorage.getItem('vault_bio_cred')){
+    document.getElementById('l-bio-wrap').style.display='block';
+    if(sessionStorage.getItem('vault_session_pw')) setTimeout(biometricAuth,400);
+  }
+}
+
+function showScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById('screen-'+id).classList.add('active'); }
+
+async function unlock(){
+  const pw=document.getElementById('l-pw').value;
+  const errEl=document.getElementById('l-err');
+  errEl.textContent='';
+  if(!pw){errEl.textContent='Enter your master password.';return;}
+  await attemptUnlock(pw);
+}
+
+async function attemptUnlock(pw){
+  try{
+    const blob=localStorage.getItem(SK);
+    const {key,salt,data}=await decryptVault(pw,blob);
+    cryptoKey=key; vaultSalt=salt; entries=data.entries||[];
+    sessionStorage.setItem('vault_session_pw',pw);
+    document.getElementById('l-err').textContent='';
+    showScreen('main'); ghConfig=loadGhConfig(); renderAll();
+    if(ghConfig&&localStorage.getItem(AUTO_SYNC_K)==='1') setTimeout(syncNow,600);
+    setSyncState(ghConfig?'':'');
+    const bioAvail=await checkBioSupport(),bioReg=localStorage.getItem(BIO_K)==='1';
+    if(bioAvail&&!bioReg) await setupBiometric();
+  }catch{ document.getElementById('l-err').textContent='Wrong password.'; }
+}
+
+function lockVault(){ cryptoKey=null; vaultSalt=null; entries=[]; expandedId=null; sessionStorage.removeItem('vault_session_pw'); showScreen('lock'); document.getElementById('l-pw').value=''; document.getElementById('l-err').textContent=''; }
+
+// ---- SETTINGS ----
+async function saveGithubConfig(){
+  const token=document.getElementById('cfg-token').value.trim(),user=document.getElementById('cfg-user').value.trim(),repo=document.getElementById('cfg-repo').value.trim(),path=document.getElementById('cfg-path').value.trim()||'vault.enc';
+  const errEl=document.getElementById('cfg-err');
+  errEl.textContent=''; errEl.style.color='';
+  if(!token||!user||!repo){errEl.textContent='All fields required.';return;}
+  const cfg={token,user,repo,path};
+  errEl.textContent='Testing…';
+  try{
+    const r=await fetch(`https://api.github.com/repos/${user}/${repo}`,{headers:ghHeaders(cfg)});
+    if(!r.ok) throw new Error(`Repo not accessible (${r.status})`);
+    ghConfig=cfg; localStorage.setItem(CFG_K,JSON.stringify(cfg));
+    errEl.style.color='var(--success)'; errEl.textContent='✓ Connected';
+    updateSettingsSyncStatus('synced',`${user}/${repo}/${path}`);
+    setTimeout(()=>{errEl.textContent='';errEl.style.color='';},3000);
+    updateAutoSyncUI();
+  }catch(e){ errEl.textContent='Error: '+e.message; updateSettingsSyncStatus('error',e.message); }
+}
+
+function openSettings(){
+  if(ghConfig){document.getElementById('cfg-token').value=ghConfig.token;document.getElementById('cfg-user').value=ghConfig.user;document.getElementById('cfg-repo').value=ghConfig.repo;document.getElementById('cfg-path').value=ghConfig.path;updateSettingsSyncStatus('synced',`${ghConfig.user}/${ghConfig.repo}/${ghConfig.path}`);}
+  else updateSettingsSyncStatus('none','Not configured');
+  updateAutoSyncUI(); updateBioSettingsUI();
+  document.getElementById('settings-panel').classList.add('open');
+  document.getElementById('settings-overlay').classList.add('open');
+}
+function closeSettings(){ document.getElementById('settings-panel').classList.remove('open'); document.getElementById('settings-overlay').classList.remove('open'); }
+function updateSettingsSyncStatus(state,msg){ document.getElementById('cfg-sync-dot').className='sync-dot '+(state==='synced'?'synced':state==='error'?'error':''); document.getElementById('cfg-sync-label').textContent=msg; }
+function toggleAutoSync(){ localStorage.setItem(AUTO_SYNC_K,localStorage.getItem(AUTO_SYNC_K)==='1'?'0':'1'); updateAutoSyncUI(); }
+function updateAutoSyncUI(){ const on=localStorage.getItem(AUTO_SYNC_K)==='1'; document.getElementById('autosync-btn').textContent=on?'Disable auto-sync':'Enable auto-sync'; document.getElementById('autosync-badge').style.display=on?'inline-flex':'none'; }
+async function updateBioSettingsUI(){ const avail=await checkBioSupport(),reg=localStorage.getItem(BIO_K)==='1'; const info=document.getElementById('bio-settings-info'),btn=document.getElementById('bio-settings-btn'); if(!avail){info.textContent='Biometrics not available on this device.';btn.style.display='none';return;} info.textContent=reg?'Biometrics registered.':'No biometrics registered.'; btn.textContent=reg?'Re-register':'Register biometrics'; }
+function confirmWipe(){ closeSettings(); showConfirm('Wipe local vault?','Removes all local data. Remote vault on GitHub stays intact.','Wipe',()=>{ [SK,CFG_K,SYNC_TS_K,BIO_K,AUTO_SYNC_K,'vault_bio_cred','vault_session_pw'].forEach(k=>localStorage.removeItem(k)); sessionStorage.clear(); location.reload(); },'var(--danger)'); }
+function setSyncState(s){ document.getElementById('sync-dot').className='sync-dot'+(s==='synced'?' synced':s==='syncing'?' syncing':s==='error'?' error':''); }
+
+// ---- BIOMETRIC ----
+async function checkBioSupport(){ try{ return !!window.PublicKeyCredential&&await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable(); }catch{return false;} }
+async function setupBiometric(){ try{ const cred=await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),rp:{name:'Vault',id:location.hostname||'localhost'},user:{id:new Uint8Array(16),name:'vault_user',displayName:'Vault'},pubKeyCredParams:[{type:'public-key',alg:-7},{type:'public-key',alg:-257}],authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required'},timeout:60000}}); if(cred){localStorage.setItem('vault_bio_cred',btoa(String.fromCharCode(...new Uint8Array(cred.rawId))));localStorage.setItem(BIO_K,'1');showToast('Biometrics registered');updateBioSettingsUI();} }catch(e){showToast('Biometric: '+e.message);} }
+async function biometricAuth(){ try{ const credId=Uint8Array.from(atob(localStorage.getItem('vault_bio_cred')||''),c=>c.charCodeAt(0)); const a=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),allowCredentials:[{type:'public-key',id:credId}],userVerification:'required',timeout:60000}}); if(a){const pw=sessionStorage.getItem('vault_session_pw'); if(pw) await attemptUnlock(pw); else{showToast('Session expired');document.getElementById('l-bio-wrap').style.display='none';}} }catch{showToast('Biometric failed');} }
+
+// ---- ENTRIES ----
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 const ICON_COLORS=['#7c6aff','#a78bfa','#818cf8','#6366f1','#8b5cf6','#c084fc','#e879f9','#38bdf8','#34d399','#fb923c'];
-function iconColor(t){let h=0;for(const c of(t||''))h=(h*31+c.charCodeAt(0))&0xffffffff;return ICON_COLORS[Math.abs(h)%ICON_COLORS.length];}
-function initials(t){const w=(t||'?').trim().split(/\s+/);return w.length>=2?(w[0][0]+w[1][0]).toUpperCase():(t||'?').slice(0,2).toUpperCase();}
-function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function getCategories(){return[...new Set(entries.map(e=>e.category).filter(Boolean))];}
-
-function renderAll(){renderFilterBar();renderEntries();}
-function renderFilterBar(){const bar=document.getElementById('filter-bar'),cats=getCategories();bar.innerHTML=[`<button class="filter-chip ${activeFilter==='all'?'active':''}" onclick="setFilter('all',this)">All <span style="color:var(--text3);font-size:10px">${entries.length}</span></button>`,...cats.map(c=>`<button class="filter-chip ${activeFilter===c?'active':''}" onclick="setFilter('${esc(c)}',this)">${esc(c)}</button>`)].join('');}
-function setFilter(val,el){activeFilter=val;document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');renderEntries();}
-function getFiltered(){const q=document.getElementById('search-input').value.toLowerCase().trim();return entries.filter(e=>{if(activeFilter!=='all'&&e.category!==activeFilter)return false;if(!q)return true;return[(e.title||''),(e.login||''),(e.category||''),(e.owner||''),(e.notes||''),...(e.tags||[])].some(x=>x.toLowerCase().includes(q));});}
+function iconColor(t){ let h=0; for(const c of(t||'')) h=(h*31+c.charCodeAt(0))&0xffffffff; return ICON_COLORS[Math.abs(h)%ICON_COLORS.length]; }
+function initials(t){ const w=(t||'?').trim().split(/\s+/); return w.length>=2?(w[0][0]+w[1][0]).toUpperCase():(t||'?').slice(0,2).toUpperCase(); }
+function esc(s){ return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function getCategories(){ return[...new Set(entries.map(e=>e.category).filter(Boolean))]; }
+function renderAll(){ renderFilterBar(); renderEntries(); }
+function renderFilterBar(){ const bar=document.getElementById('filter-bar'),cats=getCategories(); bar.innerHTML=[`<button class="filter-chip ${activeFilter==='all'?'active':''}" onclick="setFilter('all',this)">All <span style="color:var(--text3);font-size:10px">${entries.length}</span></button>`,...cats.map(c=>`<button class="filter-chip ${activeFilter===c?'active':''}" onclick="setFilter('${esc(c)}',this)">${esc(c)}</button>`)].join(''); }
+function setFilter(val,el){ activeFilter=val; document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active')); el.classList.add('active'); renderEntries(); }
+function getFiltered(){ const q=document.getElementById('search-input').value.toLowerCase().trim(); return entries.filter(e=>{ if(activeFilter!=='all'&&e.category!==activeFilter) return false; if(!q) return true; return[(e.title||''),(e.login||''),(e.category||''),(e.owner||''),(e.notes||''),...(e.tags||[])].some(x=>x.toLowerCase().includes(q)); }); }
 
 function renderEntries(){
   const list=document.getElementById('entries-list'),filtered=getFiltered();
-  if(!filtered.length){list.innerHTML=`<div class="empty-state fade-in"><div class="empty-icon">🔒</div><div>${entries.length===0?'Your vault is empty.<br>Tap + to add your first entry.':'No entries match your search.'}</div></div>`;return;}
+  if(!filtered.length){ list.innerHTML=`<div class="empty-state fade-in"><div class="empty-icon">🔒</div><div>${entries.length===0?'Your vault is empty.<br>Tap + to add your first entry.':'No entries match your search.'}</div></div>`; return; }
   list.innerHTML=filtered.map(e=>{
     const isExp=expandedId===e.id;
     const tags=(e.tags||[]).map(t=>`<span class="tag-pill">${esc(t)}</span>`).join('');
-    const subparts=[e.login?`<span style="font-family:var(--mono);font-size:10px;color:var(--text3)">${esc(e.login)}</span>`:null,e.category,e.owner].filter(Boolean);
-    const sub=subparts.map((x,i)=>i===0&&e.login?x:esc(x)).join(' · ')+(tags&&subparts.length?'&nbsp;':'')+tags;
+    const subLogin=e.login?`<span style="font-family:var(--mono);font-size:10px">${esc(e.login)}</span>`:'';
+    const subCat=[e.category,e.owner].filter(Boolean).map(esc).join(' · ');
+    const sub=[subLogin,subCat].filter(Boolean).join(' · ')+(tags?'&nbsp;':'')+tags;
     const col=iconColor(e.title);
     return `<div class="entry-card ${isExp?'expanded':''} fade-in" id="card-${e.id}" onclick="toggleExpand('${e.id}',event)">
       <div class="entry-header">
         <div class="entry-icon" style="color:${col};border-color:${col}22">${initials(e.title)}</div>
         <div class="entry-meta"><div class="entry-title">${esc(e.title)}</div>${sub?`<div class="entry-sub">${sub}</div>`:''}</div>
-        <div onclick="event.stopPropagation()">
-          <button class="btn-sm" id="cb-${e.id}" onclick="copyPw('${e.id}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy pw</button>
-        </div>
+        <div onclick="event.stopPropagation()"><button class="btn-sm" id="cb-${e.id}" onclick="copyPw('${e.id}')"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy pw</button></div>
       </div>
       <div class="entry-detail">
-        ${e.login?`<div class="detail-row"><div class="detail-label">Login</div>
-          <div class="detail-copy-row">
-            <span class="detail-copy-val">${esc(e.login)}</span>
-            <button class="btn-sm" id="cl-${e.id}" onclick="copyLogin('${e.id}',event)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button>
-          </div>
-        </div>`:''}
+        ${e.login?`<div class="detail-row"><div class="detail-label">Login</div><div class="detail-copy-row"><span class="detail-copy-val">${esc(e.login)}</span><button class="btn-sm" id="cl-${e.id}" onclick="copyLogin('${e.id}',event)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button></div></div>`:''}
         <div class="detail-row"><div class="detail-label">Password</div>
           <div class="pw-row"><span class="pw-dots" id="pd-${e.id}">••••••••</span>
             <div class="pw-btns">
@@ -417,30 +703,28 @@ function renderEntries(){
   }).join('');
 }
 
-function toggleExpand(id,event){expandedId=(expandedId===id)?null:id;renderEntries();}
-
-async function copyPw(id){const e=entries.find(x=>x.id===id);if(!e)return;try{await navigator.clipboard.writeText(e.password);const btn=document.getElementById('cb-'+id);if(btn){btn.classList.add('ok');btn.innerHTML='✓ Copied';setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy pw';},1800);}showToast('Password copied');}catch{showToast('Copy failed');}}
-
-async function copyLogin(id,event){event.stopPropagation();const e=entries.find(x=>x.id===id);if(!e||!e.login)return;try{await navigator.clipboard.writeText(e.login);const btn=document.getElementById('cl-'+id);if(btn){btn.classList.add('ok');btn.innerHTML='✓ Copied';setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';},1800);}showToast('Login copied');}catch{showToast('Copy failed');}}
+function toggleExpand(id,event){ expandedId=(expandedId===id)?null:id; renderEntries(); }
+async function copyPw(id){ const e=entries.find(x=>x.id===id); if(!e) return; try{ await navigator.clipboard.writeText(e.password); const btn=document.getElementById('cb-'+id); if(btn){btn.classList.add('ok');btn.innerHTML='✓ Copied';setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy pw';},1800);} showToast('Password copied'); }catch{ showToast('Copy failed'); } }
+async function copyLogin(id,event){ event.stopPropagation(); const e=entries.find(x=>x.id===id); if(!e||!e.login) return; try{ await navigator.clipboard.writeText(e.login); const btn=document.getElementById('cl-'+id); if(btn){btn.classList.add('ok');btn.innerHTML='✓ Copied';setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';},1800);} showToast('Login copied'); }catch{ showToast('Copy failed'); } }
 
 let showPwTimers={};
-function toggleShowPw(id,btn,event){event.stopPropagation();const e=entries.find(x=>x.id===id);if(!e)return;const disp=document.getElementById('pd-'+id),showing=disp.classList.contains('pw-plain');if(showing){disp.textContent='••••••••';disp.className='pw-dots';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Show';clearTimeout(showPwTimers[id]);}else{disp.textContent=e.password;disp.className='pw-plain';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg> Hide';showPwTimers[id]=setTimeout(()=>{const d2=document.getElementById('pd-'+id);if(d2&&d2.classList.contains('pw-plain')){d2.textContent='••••••••';d2.className='pw-dots';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Show';}},15000);}}
+function toggleShowPw(id,btn,event){ event.stopPropagation(); const e=entries.find(x=>x.id===id); if(!e) return; const disp=document.getElementById('pd-'+id),showing=disp.classList.contains('pw-plain'); if(showing){disp.textContent='••••••••';disp.className='pw-dots';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Show';clearTimeout(showPwTimers[id]);}else{disp.textContent=e.password;disp.className='pw-plain';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg> Hide';showPwTimers[id]=setTimeout(()=>{const d2=document.getElementById('pd-'+id);if(d2&&d2.classList.contains('pw-plain')){d2.textContent='••••••••';d2.className='pw-dots';btn.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Show';}},15000);} }
 
-function openAddModal(){editingId=null;document.getElementById('modal-title').textContent='New entry';['f-title','f-login','f-pw','f-cat','f-owner','f-tags','f-notes'].forEach(id=>{document.getElementById(id).value='';});document.getElementById('f-pw').type='password';document.getElementById('f-sf').style.width='0%';document.getElementById('f-sl').textContent='';document.getElementById('modal-err').textContent='';document.getElementById('cat-dl').innerHTML=getCategories().map(c=>`<option value="${esc(c)}">`).join('');document.getElementById('entry-modal').classList.add('open');setTimeout(()=>document.getElementById('f-title').focus(),120);}
-function openEditModal(id,event){event.stopPropagation();const e=entries.find(x=>x.id===id);if(!e)return;editingId=id;document.getElementById('modal-title').textContent='Edit entry';document.getElementById('f-title').value=e.title||'';document.getElementById('f-login').value=e.login||'';document.getElementById('f-pw').value=e.password||'';document.getElementById('f-pw').type='password';document.getElementById('f-cat').value=e.category||'';document.getElementById('f-owner').value=e.owner||'';document.getElementById('f-tags').value=(e.tags||[]).join(', ');document.getElementById('f-notes').value=e.notes||'';document.getElementById('modal-err').textContent='';updateStr(e.password||'','f-sf','f-sl');document.getElementById('cat-dl').innerHTML=getCategories().map(c=>`<option value="${esc(c)}">`).join('');document.getElementById('entry-modal').classList.add('open');setTimeout(()=>document.getElementById('f-title').focus(),120);}
-function closeModal(){document.getElementById('entry-modal').classList.remove('open');editingId=null;}
-async function saveEntry(){const title=document.getElementById('f-title').value.trim(),pw=document.getElementById('f-pw').value,errEl=document.getElementById('modal-err');if(!title){errEl.textContent='Title is required.';return;}if(!pw){errEl.textContent='Password is required.';return;}errEl.textContent='';const tags=document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean);const data={title,login:document.getElementById('f-login').value.trim(),password:pw,category:document.getElementById('f-cat').value.trim(),owner:document.getElementById('f-owner').value.trim(),tags,notes:document.getElementById('f-notes').value.trim()};if(editingId){const i=entries.findIndex(e=>e.id===editingId);if(i!==-1)entries[i]={...entries[i],...data};}else entries.unshift({id:uid(),createdAt:Date.now(),...data});await saveVault();closeModal();renderAll();showToast(editingId?'Entry updated':'Entry saved');}
+function openAddModal(){ editingId=null; document.getElementById('modal-title').textContent='New entry'; ['f-title','f-login','f-pw','f-cat','f-owner','f-tags','f-notes'].forEach(id=>document.getElementById(id).value=''); document.getElementById('f-pw').type='password'; document.getElementById('f-sf').style.width='0%'; document.getElementById('f-sl').textContent=''; document.getElementById('modal-err').textContent=''; document.getElementById('cat-dl').innerHTML=getCategories().map(c=>`<option value="${esc(c)}">`).join(''); document.getElementById('entry-modal').classList.add('open'); setTimeout(()=>document.getElementById('f-title').focus(),120); }
+function openEditModal(id,event){ event.stopPropagation(); const e=entries.find(x=>x.id===id); if(!e) return; editingId=id; document.getElementById('modal-title').textContent='Edit entry'; document.getElementById('f-title').value=e.title||''; document.getElementById('f-login').value=e.login||''; document.getElementById('f-pw').value=e.password||''; document.getElementById('f-pw').type='password'; document.getElementById('f-cat').value=e.category||''; document.getElementById('f-owner').value=e.owner||''; document.getElementById('f-tags').value=(e.tags||[]).join(', '); document.getElementById('f-notes').value=e.notes||''; document.getElementById('modal-err').textContent=''; updateStr(e.password||'','f-sf','f-sl'); document.getElementById('cat-dl').innerHTML=getCategories().map(c=>`<option value="${esc(c)}">`).join(''); document.getElementById('entry-modal').classList.add('open'); setTimeout(()=>document.getElementById('f-title').focus(),120); }
+function closeModal(){ document.getElementById('entry-modal').classList.remove('open'); editingId=null; }
+async function saveEntry(){ const title=document.getElementById('f-title').value.trim(),pw=document.getElementById('f-pw').value,errEl=document.getElementById('modal-err'); if(!title){errEl.textContent='Title is required.';return;} if(!pw){errEl.textContent='Password is required.';return;} errEl.textContent=''; const tags=document.getElementById('f-tags').value.split(',').map(t=>t.trim()).filter(Boolean); const data={title,login:document.getElementById('f-login').value.trim(),password:pw,category:document.getElementById('f-cat').value.trim(),owner:document.getElementById('f-owner').value.trim(),tags,notes:document.getElementById('f-notes').value.trim()}; if(editingId){const i=entries.findIndex(e=>e.id===editingId);if(i!==-1)entries[i]={...entries[i],...data};}else entries.unshift({id:uid(),createdAt:Date.now(),...data}); await saveVault(); closeModal(); renderAll(); showToast(editingId?'Entry updated':'Entry saved'); }
 
-function showConfirm(title,body,okLabel,cb,okColor){document.getElementById('confirm-box').style.display='block';document.getElementById('conflict-box').style.display='none';document.getElementById('confirm-title').textContent=title;document.getElementById('confirm-body').textContent=body;const ok=document.getElementById('confirm-ok');ok.textContent=okLabel;ok.style.background=okColor||'var(--danger)';pendingConfirmCb=cb;document.getElementById('confirm-overlay').classList.add('open');}
-function closeConfirm(){document.getElementById('confirm-overlay').classList.remove('open');pendingConfirmCb=null;conflictData=null;}
-document.getElementById('confirm-ok').addEventListener('click',()=>{if(pendingConfirmCb){const cb=pendingConfirmCb;pendingConfirmCb=null;closeConfirm();cb();}});
-function confirmDeleteEntry(id,event){event.stopPropagation();showConfirm('Delete entry?','This action cannot be undone.','Delete',async()=>{entries=entries.filter(e=>e.id!==id);if(expandedId===id)expandedId=null;await saveVault();renderAll();showToast('Entry deleted');});}
+function showConfirm(title,body,okLabel,cb,okColor){ document.getElementById('confirm-box').style.display='block'; document.getElementById('conflict-box').style.display='none'; document.getElementById('confirm-title').textContent=title; document.getElementById('confirm-body').textContent=body; const ok=document.getElementById('confirm-ok'); ok.textContent=okLabel; ok.style.background=okColor||'var(--danger)'; pendingConfirmCb=cb; document.getElementById('confirm-overlay').classList.add('open'); }
+function closeConfirm(){ document.getElementById('confirm-overlay').classList.remove('open'); pendingConfirmCb=null; conflictData=null; }
+document.getElementById('confirm-ok').addEventListener('click',()=>{ if(pendingConfirmCb){const cb=pendingConfirmCb;pendingConfirmCb=null;closeConfirm();cb();} });
+function confirmDeleteEntry(id,event){ event.stopPropagation(); showConfirm('Delete entry?','This action cannot be undone.','Delete',async()=>{ entries=entries.filter(e=>e.id!==id); if(expandedId===id) expandedId=null; await saveVault(); renderAll(); showToast('Entry deleted'); }); }
 
-function toggleVis(id,btn){const el=document.getElementById(id);const hide=el.type==='password';el.type=hide?'text':'password';btn.innerHTML=hide?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>':'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';}
-function pwStrength(pw){if(!pw)return{pct:0,label:'',color:'#ff5b5b'};let s=0;if(pw.length>=8)s++;if(pw.length>=14)s++;if(pw.length>=20)s++;if(/[A-Z]/.test(pw))s++;if(/[a-z]/.test(pw))s++;if(/[0-9]/.test(pw))s++;if(/[^A-Za-z0-9]/.test(pw))s++;const ls=['','Very weak','Weak','Fair','Good','Strong','Very strong','Excellent'],cs=['','#ff5b5b','#ff8c5b','#fbbf24','#84cc16','#4ade80','#34d399','#6ee7b7'];return{pct:Math.round(Math.min(s,7)/7*100),label:ls[Math.min(s,7)],color:cs[Math.min(s,7)]};}
-function updateStr(pw,fillId,lblId){const s=pwStrength(pw);const f=document.getElementById(fillId),l=document.getElementById(lblId);f.style.width=s.pct+'%';f.style.background=s.color;l.textContent=s.label||(pw?'Very weak':'');l.style.color=s.color||'var(--text3)';}
-function genPw(){const chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:,.<>?';const arr=new Uint8Array(24);crypto.getRandomValues(arr);const pw=[...arr].map(b=>chars[b%chars.length]).join('');const el=document.getElementById('f-pw');el.type='text';el.value=pw;updateStr(pw,'f-sf','f-sl');}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+function toggleVis(id,btn){ const el=document.getElementById(id),hide=el.type==='password'; el.type=hide?'text':'password'; btn.innerHTML=hide?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>':'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'; }
+function pwStrength(pw){ if(!pw) return{pct:0,label:'',color:'#ff5b5b'}; let s=0; if(pw.length>=8)s++;if(pw.length>=14)s++;if(pw.length>=20)s++;if(/[A-Z]/.test(pw))s++;if(/[a-z]/.test(pw))s++;if(/[0-9]/.test(pw))s++;if(/[^A-Za-z0-9]/.test(pw))s++; const ls=['','Very weak','Weak','Fair','Good','Strong','Very strong','Excellent'],cs=['','#ff5b5b','#ff8c5b','#fbbf24','#84cc16','#4ade80','#34d399','#6ee7b7']; return{pct:Math.round(Math.min(s,7)/7*100),label:ls[Math.min(s,7)],color:cs[Math.min(s,7)]}; }
+function updateStr(pw,fillId,lblId){ const s=pwStrength(pw); document.getElementById(fillId).style.width=s.pct+'%'; document.getElementById(fillId).style.background=s.color; document.getElementById(lblId).textContent=s.label||(pw?'Very weak':''); document.getElementById(lblId).style.color=s.color||'var(--text3)'; }
+function genPw(){ const chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:,.<>?'; const arr=new Uint8Array(24); crypto.getRandomValues(arr); const pw=[...arr].map(b=>chars[b%chars.length]).join(''); const el=document.getElementById('f-pw'); el.type='text'; el.value=pw; updateStr(pw,'f-sf','f-sl'); }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
 
 document.getElementById('entry-modal').addEventListener('click',e=>{if(e.target===document.getElementById('entry-modal'))closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeConfirm();closeSettings();}});
